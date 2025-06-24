@@ -1,0 +1,784 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Saykot Biswas Shawon - Full Stack Developer & Digital Marketing Expert Portfolio</title>
+<style>
+  /* CSS Variables for theming */
+  :root {
+    --color-bg: #0d0d14;
+    --color-primary: #ff4081;
+    --color-secondary: #00e676;
+    --color-accent1: #2979ff;
+    --color-accent2: #ffea00;
+    --color-text-light: #e0e0e0;
+    --color-text-muted: #757575;
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --transition-speed: 0.4s;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@700&display=swap');
+
+  /* Reset and base */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-light);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+  }
+  a:hover,
+  a:focus {
+    color: var(--color-accent1);
+  }
+
+  /* Container max width */
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem 1rem;
+  }
+
+  /* Header & Nav */
+  header {
+    position: sticky;
+    top: 0;
+    background: rgba(13, 13, 20, 0.85);
+    backdrop-filter: saturate(180%) blur(10px);
+    border-bottom: 1px solid #222;
+    z-index: 1000;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+  .logo {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--color-accent2);
+    cursor: default;
+    letter-spacing: 0.1em;
+    user-select: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .nav-links button {
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+  }
+  .nav-links button:hover,
+  .nav-links button:focus {
+    background-color: var(--color-primary);
+    transform: scale(1.05);
+    outline: none;
+  }
+  .nav-links button[aria-current="page"] {
+    color: var(--color-accent1);
+    font-weight: 700;
+    border-bottom: 2px solid var(--color-accent1);
+  }
+
+  /* Main content sections */
+  section {
+    padding: 8rem 1rem 6rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  section.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hero */
+  #home {
+    position: relative;
+    color: #fff;
+    text-align: center;
+  }
+  #home h1 {
+    font-family: var(--font-heading);
+    font-size: 3.8rem;
+    font-weight: 800;
+    text-shadow: 0 0 15px var(--color-primary);
+    margin-bottom: 1rem;
+  }
+  #home p {
+    font-size: 1.4rem;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    text-shadow: 0 0 6px #0008;
+  }
+  .hero-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent1));
+    color: white;
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px var(--color-primary);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+  }
+  .hero-cta:hover, .hero-cta:focus {
+    transform: scale(1.08);
+    box-shadow: 0 6px 25px var(--color-accent1);
+    outline: none;
+  }
+
+  /* About Section */
+  #about {
+    background: linear-gradient(135deg, #030312 70%, #0d0d14 100%);
+    border-radius: 1rem;
+    box-shadow: 0 0 40px rgb(255 64 129 / 0.3);
+  }
+  #about .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  #about img {
+    width: 100%;
+    border-radius: 20px;
+    border: 3px solid var(--color-primary);
+    box-shadow: 0 0 20px var(--color-primary);
+    animation: float 6s ease-in-out infinite;
+  }
+  #about div.text {
+    color: var(--color-text-light);
+  }
+  #about h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-accent2);
+  }
+  #about p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  #about ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+  }
+  #about ul li {
+    background-color: var(--color-primary);
+    color: #0d0d14;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    box-shadow: 0 3px 10px rgb(255 64 129 / 0.7);
+    cursor: default;
+    user-select: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  #about ul li:hover {
+    background-color: var(--color-accent1);
+    color: white;
+  }
+
+  /* Portfolio Section */
+  #portfolio {
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #11121a, #0d0d14);
+    box-shadow: 0 0 40px var(--color-accent1);
+  }
+  #portfolio h2 {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    color: var(--color-accent1);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  .project-card {
+    background: #12121c;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgb(41 121 255 / 0.2);
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px var(--color-accent1);
+  }
+  .project-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-bottom: 2px solid var(--color-primary);
+  }
+  .project-info {
+    padding: 1rem 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .project-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+  }
+  .project-info p {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    flex-grow: 1;
+  }
+  .project-info a {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+  }
+  .project-info a:hover {
+    color: var(--color-accent1);
+  }
+
+  /* Services Section */
+  #services {
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #141422, #0d0d14);
+    box-shadow: 0 0 35px var(--color-primary);
+    padding-bottom: 3rem;
+  }
+  #services h2 {
+    font-family: var(--font-heading);
+    font-size: 2.6rem;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .services-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  .service-card {
+    background: #12121c;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgb(255 64 129 / 0.3);
+    padding: 2rem;
+    flex: 1 1 280px;
+    max-width: 320px;
+    text-align: center;
+    color: var(--color-secondary);
+    cursor: default;
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .service-card:hover,
+  .service-card:focus-visible {
+    transform: translateY(-10px) rotateX(5deg) scale(1.04);
+    box-shadow: 0 20px 40px var(--color-primary);
+    outline: none;
+  }
+  .service-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  .service-card p {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Contact Section */
+  #contact {
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #0a0a10, #0d0d14);
+    box-shadow: 0 0 35px var(--color-accent2);
+    padding-bottom: 4rem;
+  }
+  #contact h2 {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    color: var(--color-accent2);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  #contact p.description {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+  .contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+  .contact-item {
+    background: #12121c;
+    padding: 1.2rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgb(255 234 0 / 0.4);
+    text-align: center;
+    min-width: 180px;
+    cursor: default;
+    user-select: none;
+    transition: box-shadow 0.3s ease;
+  }
+  .contact-item:hover {
+    box-shadow: 0 15px 35px var(--color-accent2);
+  }
+  .contact-item h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-accent2);
+  }
+  .contact-item a,
+  .contact-item p {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+  }
+  .contact-item a:hover,
+  .contact-item a:focus {
+    color: var(--color-primary);
+    outline: none;
+  }
+
+  /* Social Media in Footer */
+  footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    user-select: none;
+  }
+  .social-links {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .social-links a {
+    color: var(--color-text-light);
+    font-size: 1.4rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+  }
+  .social-links a:hover,
+  .social-links a:focus {
+    color: var(--color-primary);
+    transform: scale(1.3);
+    outline: none;
+  }
+
+  /* Floating WhatsApp icon */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #25d366;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 20px #25d366aa;
+    cursor: pointer;
+    z-index: 10000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .whatsapp-float:hover,
+  .whatsapp-float:focus {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px #25d366cc;
+    outline: none;
+  }
+  .whatsapp-float svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+  }
+
+  /* Micro Animations */
+
+  @keyframes float {
+    0%, 100% { transform: translatey(0px); }
+    50% { transform: translatey(-15px); }
+  }
+
+  /* Background DNA animation container */
+  #background-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    background: linear-gradient(135deg, #0d0d14, #111);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    #about .content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    #about img {
+      margin-bottom: 2rem;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    nav {
+      padding: 1rem;
+    }
+    .nav-links {
+      gap: 1rem;
+    }
+    .service-card {
+      max-width: 100%;
+    }
+  }
+
+</style>
+</head>
+<body>
+<!-- Background DNA Canvas -->
+<canvas id="background-canvas"></canvas>
+
+<header>
+  <nav aria-label="Primary navigation">
+    <div class="logo" tabindex="0" aria-label="Saykot Biswas Shawon logo">SB Shawon</div>
+    <div class="nav-links" role="menubar" aria-label="Main menu">
+      <button role="menuitem" aria-current="page" data-target="home">Home</button>
+      <button role="menuitem" data-target="about">About</button>
+      <button role="menuitem" data-target="portfolio">Portfolio</button>
+      <button role="menuitem" data-target="services">Services</button>
+      <button role="menuitem" data-target="contact">Contact</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section id="home" tabindex="0" aria-label="Home section" class="active" role="region">
+    <div class="container">
+      <h1>Hello! I'm Saykot Biswas Shawon</h1>
+      <p>Full Stack Developer & Digital Marketing Expert</p>
+      <button class="hero-cta" aria-label="Get in touch with Saykot Biswas Shawon" id="hero-cta-btn">Contact Me</button>
+    </div>
+  </section>
+
+  <section id="about" tabindex="0" aria-label="About section" role="region">
+    <div class="container">
+      <div class="content">
+        <img src="https://avatars.githubusercontent.com/u/125138674?v=4" alt="Portrait of Saykot Biswas Shawon" />
+        <div class="text">
+          <h2>About Me</h2>
+          <p>I'm Saykot Biswas Shawon, a passionate full-stack developer and digital marketing specialist. I love creating beautiful and functional websites, apps, and campaigns that help brands grow and prosper.</p>
+          <ul>
+            <li>JavaScript / React / Node.js</li>
+            <li>Python / Django / Flask</li>
+            <li>SEO & Marketing Strategies</li>
+            <li>Social Media Campaigns</li>
+            <li>Responsive & Animated UI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" tabindex="0" aria-label="Portfolio section" role="region">
+    <div class="container">
+      <h2>My Projects</h2>
+      <div class="projects-grid" aria-live="polite">
+        <article class="project-card" tabindex="0" aria-label="Project 1 - Modern Web App">
+          <img class="project-image" alt="Screenshot of modern web app project" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" />
+          <div class="project-info">
+            <h3>Modern Web App</h3>
+            <p>A responsive and sleek web app built with React and Node.js, optimized for performance and SEO.</p>
+            <a href="#" tabindex="0" aria-label="View Modern Web App project details">View Details</a>
+          </div>
+        </article>
+        <article class="project-card" tabindex="0" aria-label="Project 2 - E-commerce Platform">
+          <img class="project-image" alt="Screenshot of e-commerce platform project" src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=600&q=80" />
+          <div class="project-info">
+            <h3>E-commerce Platform</h3>
+            <p>Comprehensive e-commerce website with payment integration, built using Django and React.</p>
+            <a href="#" tabindex="0" aria-label="View E-commerce Platform project details">View Details</a>
+          </div>
+        </article>
+        <article class="project-card" tabindex="0" aria-label="Project 3 - Social Media Campaign">
+          <img class="project-image" alt="Visual representing social media campaign" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=600&q=80" />
+          <div class="project-info">
+            <h3>Social Media Campaign</h3>
+            <p>Targeted and dynamic campaign driving engagement and conversions on multiple platforms.</p>
+            <a href="#" tabindex="0" aria-label="View Social Media Campaign project details">View Details</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" tabindex="0" aria-label="Services section" role="region">
+    <div class="container">
+      <h2>What I Offer</h2>
+      <div class="services-list">
+        <article class="service-card" tabindex="0" aria-label="Full Stack Development service">
+          <h3>Full Stack Development</h3>
+          <p>Building performant and scalable web applications with modern technologies including React, Node.js, Python, and more.</p>
+        </article>
+        <article class="service-card" tabindex="0" aria-label="Digital Marketing service">
+          <h3>Digital Marketing</h3>
+          <p>SEO, social media marketing, PPC campaigns, and content strategies to boost your online presence and sales.</p>
+        </article>
+        <article class="service-card" tabindex="0" aria-label="UI/UX & Animation service">
+          <h3>UI/UX & Animation</h3>
+          <p>Designing visually engaging and user-friendly interfaces with smooth animations and transitions for maximum appeal.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" tabindex="0" aria-label="Contact section" role="region">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <p class="description">Want to work together or just say hello? Feel free to reach out!</p>
+      <div class="contact-info">
+        <div class="contact-item" tabindex="0" aria-label="Phone and WhatsApp contact info">
+          <h3>WhatsApp & Phone</h3>
+          <a href="https://wa.me/8801797315402" target="_blank" rel="noopener" aria-label="Send WhatsApp message to Saykot Biswas Shawon">+8801797315402</a>
+        </div>
+        <div class="contact-item" tabindex="0" aria-label="Facebook profile">
+          <h3>Facebook</h3>
+          <a href="https://www.facebook.com/saykot.biswas123" target="_blank" rel="noopener" aria-label="Visit Saykot Biswas Shawon's Facebook profile">saykot.biswas123</a>
+        </div>
+        <div class="contact-item" tabindex="0" aria-label="Instagram profile">
+          <h3>Instagram</h3>
+          <a href="https://instagram.com/shaa_woon" target="_blank" rel="noopener" aria-label="Visit Saykot Biswas Shawon's Instagram profile">@shaa_woon</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="social-links" role="list" aria-label="Social media links">
+    <a href="https://www.facebook.com/saykot.biswas123" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35C.596 0 0 .593 0 1.326v21.348C0 23.405.596 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.408c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.464.099 2.797.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.765v2.312h3.59l-.467 3.622h-3.123V24h6.116c.73 0 1.324-.596 1.324-1.326V1.326C24 .593 23.404 0 22.675 0z" /></svg>
+    </a>
+    <a href="https://instagram.com/shaa_woon" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm4.75-.88a1.13 1.13 0 110 2.25 1.13 1.13 0 010-2.25z" /></svg>
+    </a>
+  </div>
+  © 2024 Saykot Biswas Shawon — Full Stack Developer & Digital Marketing Expert
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/8801797315402" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.52 3.48A11.79 11.79 0 0012-.003a11.965 11.965 0 00-9.503 19.41L.7 23.29a1 1 0 001.418 1.01l3.498-1.16a11.754 11.754 0 006.38 1.763h.032a11.77 11.77 0 008.431-20.428zM12 21.735a9.57 9.57 0 01-4.846-1.342l-.347-.208-2.074.688.698-2.02-.226-.35A9.575 9.575 0 1121.574 12a9.48 9.48 0 01-9.574 9.735zm5.084-7.474c-.282-.144-1.664-.88-1.922-.981-.257-.1-.445-.144-.633.142-.189.286-.732.98-.898 1.18-.165.2-.334.227-.617.082-.282-.144-1.19-.44-2.27-1.398-.84-.746-1.405-1.666-1.57-1.95-.165-.286-.018-.44.126-.583.129-.128.282-.333.423-.5.144-.166.19-.286.282-.48.094-.193.047-.36-.024-.503-.072-.143-.633-1.52-.867-2.08-.228-.547-.46-.473-.633-.482l-.54-.01c-.183 0-.48.07-.732.333-.256.275-.98.95-.98 2.317 0 1.367 1.004 2.69 1.145 2.875.143.2 1.976 3.015 4.79 4.227.67.288 1.19.46 1.597.59.67.215 1.28.185 1.76.112.537-.082 1.664-.68 1.9-1.337.237-.656.237-1.217.166-1.336-.068-.12-.25-.193-.532-.336z"/></svg>
+</a>
+
+<script>
+  // SPA-style section navigation with animation
+  const navButtons = document.querySelectorAll('.nav-links button');
+  const sections = document.querySelectorAll('main > section');
+  const heroCta = document.getElementById('hero-cta-btn');
+
+  function setActiveSection(targetId) {
+    sections.forEach(sec => {
+      if (sec.id === targetId) {
+        sec.classList.add('active');
+        sec.setAttribute('aria-hidden', 'false');
+        navButtons.forEach(btn => {
+          btn.setAttribute('aria-current', btn.dataset.target === targetId ? 'page' : 'false');
+        });
+        sec.focus();
+      } else {
+        sec.classList.remove('active');
+        sec.setAttribute('aria-hidden', 'true');
+      }
+    });
+  }
+
+  navButtons.forEach(button =>
+    button.addEventListener('click', () => {
+      setActiveSection(button.dataset.target);
+      window.history.pushState(null, '', `#${button.dataset.target}`);
+    })
+  );
+
+  heroCta.addEventListener('click', () => {
+    setActiveSection('contact');
+  });
+
+  // On page load, navigate to hash section or default home
+  window.addEventListener('load', () => {
+    const hash = location.hash.substr(1);
+    if (hash && document.getElementById(hash)) {
+      setActiveSection(hash);
+    } else {
+      setActiveSection('home');
+    }
+  });
+
+  // Background DNA-style animation on canvas
+
+  const canvas = document.getElementById('background-canvas');
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  const points = [];
+  const pointCount = 40;
+  let animationId;
+
+  class Point {
+    constructor(x, y, radius, phase) {
+      this.x = x;
+      this.y = y;
+      this.baseRadius = radius;
+      this.radius = radius;
+      this.phase = phase;
+      this.speed = 0.02 + Math.random() * 0.015;
+    }
+    update() {
+      this.phase += this.speed;
+      this.radius = this.baseRadius + Math.sin(this.phase) * 2;
+    }
+    draw() {
+      const gradient = ctx.createRadialGradient(this.x, this.y, this.radius * 0.1, this.x, this.y, this.radius);
+      gradient.addColorStop(0, 'rgba(255, 64, 129, 0.8)');
+      gradient.addColorStop(1, 'rgba(255, 64, 129, 0)');
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function initPoints() {
+    points.length = 0;
+    for (let i = 0; i < pointCount; i++) {
+      const x = (width / pointCount) * i + Math.random() * (width / pointCount);
+      const y = height / 2 + Math.sin((i / pointCount) * Math.PI * 4) * 60;
+      const radius = 6 + Math.random() * 4;
+      const phase = Math.random() * Math.PI * 2;
+      points.push(new Point(x, y, radius, phase));
+    }
+  }
+
+  function drawDNA() {
+    ctx.clearRect(0, 0, width, height);
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = 'rgba(255, 64, 129, 0.7)';
+    ctx.lineCap = 'round';
+
+    // Draw strands as sine wave lines
+    ctx.beginPath();
+    for (let x = 0; x < width; x++) {
+      const y = height / 2 + 40 * Math.sin(x * 0.04 + Date.now() * 0.002);
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    ctx.beginPath();
+    for (let x = 0; x < width; x++) {
+      const y = height / 2 + 40 * Math.sin(x * 0.04 + Math.PI + Date.now() * 0.002);
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Draw connecting "rungs"
+    ctx.strokeStyle = 'rgba(255, 64, 129, 0.3)';
+    for (let i = 0; i < pointCount; i++) {
+      const p = points[i];
+      p.update();
+      p.draw();
+
+      const upY = height / 2 + 40 * Math.sin(p.x * 0.04 + Date.now() * 0.002);
+      const downY = height / 2 + 40 * Math.sin(p.x * 0.04 + Math.PI + Date.now() * 0.002);
+      ctx.beginPath();
+      ctx.moveTo(p.x, upY);
+      ctx.lineTo(p.x, downY);
+      ctx.stroke();
+    }
+  }
+
+  function resizeCanvas() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width * devicePixelRatio;
+    canvas.height = height * devicePixelRatio;
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(devicePixelRatio, devicePixelRatio);
+    initPoints();
+  }
+
+  function animate() {
+    drawDNA();
+    animationId = requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+
+  resizeCanvas();
+  animate();
+
+</script>
+</body>
+</html>
+
+```
